@@ -12,7 +12,7 @@ function pipeline() {
       visit(tree, 'element', (node, index) => {
         if (node.tagName === 'p' && node.children[0].tagName === 'img') {
           node.tagName = 'figure';
-          
+
           let img = node.children[0];
           let sign = md5(img.properties.src);
           let data = img.properties.alt.split("|");
@@ -158,7 +158,12 @@ function pipeline() {
           index++;
         }
       }
-    }
+    },
+    ['rehype-katex', {
+      output: 'html',
+      displayMode: true
+      // Katex plugin options
+    }]
   ]
 }
 
@@ -168,6 +173,9 @@ function pipeline() {
 export default defineConfig({
   site: SITE_URL,
   markdown: {
+    remarkPlugins: [
+      'remark-math',
+    ],
     rehypePlugins: pipeline(),
     syntaxHighlight: 'prism',
   },
