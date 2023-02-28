@@ -37,6 +37,9 @@ const dateFormated = formatDate(pubDate);
             <div class:list={[{ "featured-subhead": featured, "article-subhead": !featured }, "component"]}>
               <div class="component-content">{description}</div>
             </div>
+            <div class:list={[{ "featured-subhead": featured, "article-subhead": !featured }, "component"]}>
+              <div class="component-content">——— {frontmatter.author}</div>
+            </div>
 
             <div class:list={["tagssheet component"]}>
               <div class="component-content">
